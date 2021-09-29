@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cassert>
 
 using namespace std;
 
@@ -40,6 +41,8 @@ SuperVector<T>::SuperVector(int n_)
 template<typename T>
 const SuperVector<T> SuperVector<T>::operator+(const SuperVector& a) const
 {
+    if (a.size() != n)
+        throw "Arrays have different sizes";
     vector<T> res(n);
     if (a.size() == n)
         for (int i = 0; i < n; ++i)
